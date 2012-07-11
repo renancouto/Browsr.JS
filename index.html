@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html class="html">
+<head>
+<meta charset="utf-8">
+<title>Browsr</title>
+
+<style type="text/css">
+
+body {
+	font: 16px/1em Arial, sans-serif;
+}
+
+table { width: 100%; }
+
+th {
+	background: #066;
+	color: #fff;
+	padding: 10px;
+}
+
+td {
+	background: #ececec;
+	font-size: 30px;
+	padding: 20px 10px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#ua {
+	background: #ececec;
+	padding: 10px;
+}
+
+</style>
+
+<script src="browsr-0.3.js"></script>
+
+</head>
+
+<body>
+
+<p id="ua"></p>
+
+<table>
+	<thead>
+		<tr>
+			<th>Engine</th>
+			<th>Browser</th>
+			<th>Version</th>
+			<th>OS</th>
+			<th>IOS</th>
+			<th>Device</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td id="engine"></td>
+			<td id="browser"></td>
+			<td id="version"></td>
+			<td id="os"></td>
+			<td id="ios"></td>
+			<td id="device"></td>
+		</tr>
+	</tbody>
+</table>
+
+<script>
+document.getElementById('ua').innerHTML = '<b>BROWSR / UA:</b> ' + navigator.userAgent;
+
+var WriteProperty = function(property) {
+	var val = Browsr[property] ? Browsr[property] : '?';
+	document.getElementById(property).innerHTML = val;
+};
+
+WriteProperty('engine');
+WriteProperty('browser');
+WriteProperty('version');
+WriteProperty('os');
+WriteProperty('ios');
+WriteProperty('device');
+</script>
+
+</body>
+</html>
