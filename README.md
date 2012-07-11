@@ -31,3 +31,5 @@ Right now, Browsr targets:
 ####Devices (device type):
 * Mobile (Android, iOS)
 * Desktop (others)
+
+A demo can be found [here](http://jsbin.com/ilegax).
