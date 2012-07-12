@@ -1,8 +1,8 @@
 #Browsr.JS
-Browsr is a small library that detects browser name, version and engine, plus operating system and device type.
-It's aimed for [the most popular platforms and browsers](http://gs.statcounter.com/), so don't expect to detect old and unknow browsers.
+[Browsr](http://jsbin.com/ilegax) is a small javascript library (less than 1kb minified!) that detects browser name, version and engine, plus operating system and device type.
+It's aimed for [the most popular platforms and browsers](http://gs.statcounter.com/), so don't expect to detect old and unknown browsers.
 
-Inspired by [Modernizr](http://modernizr.com/), Browsr also places classes on the <html> element and creates a Browsr object for Javascript access.
+Inspired by [Modernizr](http://modernizr.com/), Browsr also places classes on the <html> element and creates a Browsr object for javascript access (try typing "Browsr" on the console).
 
 Right now, Browsr targets:
 
