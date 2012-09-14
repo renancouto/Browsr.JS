@@ -1,15 +1,24 @@
-/*	Browsr
-	
-	Places classes on <html> with:
-		Engine name;
-		Browser name and version;
-		OS name;
-		Devide type;
+/*	Browsr(https://github.com/renancouto/Browsr.JS) - browser detection engine
 
-	Author:		Renan Couto
-	Version:	0.3
-	Created:	Aug Fri 02 2011
-	Updated:	Jul Mon 09 2012
+	@info:		Places classes on <html> with:
+				- Engine name;
+				- Browser name and version;
+				- OS name;
+				- Devide type;
+
+	@author:	Renan Couto
+	@version:	0.3.1
+	@created:	Aug Fri 02 2011
+	@updated:	Sep Fri 14 2012
+	@license:	MIT & BSD
+	@url:		https://github.com/renancouto/Browsr.JS
+
+	@changelog:
+
+	version: 0.3.1
+	- Small fixes to variables definitions
+	- New descriptive header
+	- Removed version info from file name
 */
 
 ;window.Browsr = (function(window, document, undefined) {
@@ -18,11 +27,17 @@
 
 		engines = ['webkit', 'gecko', 'trident', 'presto'],
 		browsers = ['msie', 'chrome', 'firefox', 'safari', 'opera'],
-		oss = ['windows', 'android', 'linux', 'ipad', 'iphone', 'macos'];
+		oss = ['windows', 'android', 'linux', 'ipad', 'iphone', 'macos'],
 
 		ua = navigator.userAgent.toLowerCase()
 			.replace(/ /g, '')
 			.replace(/\//g, ''),
+
+		pattern,
+		version,
+		html,
+		classes,
+		i,
 
 		GetProperty = function(property, properties) {
 			for (i in properties) {
@@ -37,48 +52,43 @@
 
 	GetProperty('engine', engines);
 	GetProperty('browser', browsers);
-	GetProperty('os', oss);	
+	GetProperty('os', oss);
 
 	// Get Version
-	var re = new RegExp('version([0-9]+)'),
-		version = ua.match(re);
-		
+	pattern = new RegExp('version([0-9]+)');
+	version = ua.match(pattern);
+
 	if (!version) {
-		re = new RegExp(Browsr.browser + '([0-9]+)');
-		version = ua.match(re);
+		pattern = new RegExp(Browsr.browser + '([0-9]+)');
+		version = ua.match(pattern);
 	}
-	
+
 	Browsr.version = version[1];
 
 	// Get IOS
 	if (Browsr.os == 'iphone' || Browsr.os == 'ipad') {
 		Browsr.ios = true;
 	}
-	
+
 	// Get Device
-	if (Browsr.os == 'iphone' || Browsr.os == 'ipad' || Browsr.os == 'android') {
-		Browsr.device = 'mobile';
-	}
-	else {
-		Browsr.device = 'desktop';
-	}
-	
+	(Browsr.os == 'iphone' || Browsr.os == 'ipad' || Browsr.os == 'android') ? Browsr.device = 'mobile' : Browsr.device = 'desktop';
+
 	// Write Classes
-	var html = document.getElementsByTagName('html')[0],
-		classes = html.className;
-			
+	html = document.getElementsByTagName('html')[0];
+	classes = html.className;
+
 	if (Browsr.engine) {
 		classes += ' ' + Browsr.engine;
 	}
-			
+
 	if (Browsr.browser) {
 		classes += ' ' + Browsr.browser;
 	}
-	
+
 	if (Browsr.version) {
 		classes += ' ' + Browsr.browser + Browsr.version;
 	}
-	
+
 	if (Browsr.os) {
 		classes += ' ' + Browsr.os;
 	}
@@ -88,9 +98,9 @@
 	}
 
 	classes += ' ' + Browsr.device;
-	
+
 	html.className = classes;
-	
+
 	return Browsr;
 
 })(this, this.document);

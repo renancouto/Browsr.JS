@@ -6,10 +6,7 @@
 
 <style type="text/css">
 
-body {
-	font: 16px/1em Arial, sans-serif;
-}
-
+body { font: 16px/1em Arial, sans-serif; }
 table { width: 100%; }
 
 th {
@@ -33,7 +30,7 @@ td {
 
 </style>
 
-<script src="browsr-0.3.js"></script>
+<script src="browsr.js"></script>
 
 </head>
 
@@ -66,7 +63,7 @@ td {
 </table>
 
 <script>
-document.getElementById('ua').innerHTML = '<b>BROWSR / UA:</b> ' + navigator.userAgent;
+document.getElementById('ua').innerHTML = '<b><a href="https://github.com/renancouto/Browsr.JS">BROWSR</a> / UA:</b> ' + navigator.userAgent;
 
 var WriteProperty = function(property) {
 	var val = Browsr[property] ? Browsr[property] : '?';
