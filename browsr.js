@@ -7,13 +7,16 @@
 				- Devide type;
 
 	@author:	Renan Couto
-	@version:	0.3.1
+	@version:	0.3.2
 	@created:	Aug Fri 02 2011
-	@updated:	Sep Fri 14 2012
+	@updated:	Dec Thu 20 2012
 	@license:	MIT & BSD
 	@url:		https://github.com/renancouto/Browsr.JS
 
 	@changelog:
+
+	version: 0.3.2
+	- Small fixes to variables definitions
 
 	version: 0.3.1
 	- Small fixes to variables definitions
@@ -37,10 +40,9 @@
 		version,
 		html,
 		classes,
-		i,
 
 		GetProperty = function(property, properties) {
-			for (i in properties) {
+			for (var i in properties) {
 				var prop = ua.match(properties[i]);
 
 				if (prop) {
@@ -71,7 +73,7 @@
 	}
 
 	// Get Device
-	(Browsr.os == 'iphone' || Browsr.os == 'ipad' || Browsr.os == 'android') ? Browsr.device = 'mobile' : Browsr.device = 'desktop';
+	Browsr.device = (Browsr.os == 'iphone' || Browsr.os == 'ipad' || Browsr.os == 'android') ? 'mobile' : 'desktop';
 
 	// Write Classes
 	html = document.getElementsByTagName('html')[0];
